@@ -1,22 +1,27 @@
-import { ethers } from "hardhat";
+import { ethers, upgrades } from "hardhat";
+import fs from "fs";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
-
-  const lockedAmount = ethers.parseEther("0.001");
-
-  const lock = await ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
-
-  await lock.waitForDeployment();
-
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
+  const decentralizedDriveContract = await ethers.getContractFactory(
+    "DecentralizedDrive"
   );
+
+  const decentralizedDrive = await upgrades.deployProxy(
+    decentralizedDriveContract,
+    [],
+    {
+      initializer: "initialize",
+    }
+  );
+
+  await decentralizedDrive.waitForDeployment();
+
+  fs.writeFileSync(
+    "contractAddress.json",
+    `{\n "DecentralizedDriveContractAddress" :${decentralizedDrive.target} "" \n }`
+  );
+
+  console.log(`Contract deployed to: ${decentralizedDrive.target}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
