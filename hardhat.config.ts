@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const { PRIVATE_KEY, POLYGON_END_POINT, POLYGONSACN_API_KEY } = process.env;
+const { PRIVATE_KEY, POLYGON_END_POINT } = process.env;
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -24,7 +24,7 @@ const config: HardhatUserConfig = {
       accounts: [],
       chainId: 31337,
     },
-    polygon_mumbai: {
+    amoy_testnet: {
       url: POLYGON_END_POINT,
       accounts: [PRIVATE_KEY !== undefined ? PRIVATE_KEY : ""],
     },

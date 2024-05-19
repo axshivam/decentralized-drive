@@ -16,12 +16,20 @@ async function main() {
 
   await decentralizedDrive.waitForDeployment();
 
+  const proxyContractAddress = await decentralizedDrive.getAddress();
+
   fs.writeFileSync(
     "contractAddress.json",
-    `{\n "DecentralizedDriveContractAddress" :${decentralizedDrive.target} "" \n }`
+    `{\n "DecentralizedDriveContractAddress" :"${proxyContractAddress}" \n}`
   );
 
-  console.log(`Contract deployed to: ${decentralizedDrive.target}`);
+  console.log(`Contract deployed to: ${proxyContractAddress}`);
+
+  const implementationAddress = await upgrades.erc1967.getImplementationAddress(proxyContractAddress);
+
+  console.log("Implementation Address:", implementationAddress);
+
+  fs.writeFileSync("ImplementationAddress.json", `{\n "Implementation" :"${implementationAddress}" \n}`)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
