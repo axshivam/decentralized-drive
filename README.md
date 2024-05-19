@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://socialify.git.ci/axshivam/decentralized-drive/image?font=Rokkitt&amp;forks=1&amp;issues=1&amp;language=1&amp;name=1&amp;pattern=Floating%20Cogs&amp;pulls=1&amp;stargazers=1&amp;theme=Dark" alt="project-image"></p>
 
-<p id="description">A decentralized platform allowing users to securely upload images stored using IPFS (InterPlanetary File System) for robust data storage. Utilizing Solidity a smart contract ledger is established and deployed on the Polygon Mumbai testnet to store crucial IPFS image hash details. Through a React-based dashboard, users gain seamless access to all uploaded images integrating wallet-based sign-in for enhanced security. Additionally users can effortlessly share images with others by utilizing their account addresses fostering a user-friendly and secure image-sharing experience.</p>
+<p id="description">A decentralized platform allowing users to securely upload images stored using IPFS (InterPlanetary File System) for robust data storage. Utilizing Solidity a smart contract ledger is established and deployed on the Polygon amoy testnet to store crucial IPFS image hash details. Through a React-based dashboard, users gain seamless access to all uploaded images integrating wallet-based sign-in for enhanced security. Additionally users can effortlessly share images with others by utilizing their account addresses fostering a user-friendly and secure image-sharing experience.</p>
 
 <h2>🚀 Demo</h2>
 
